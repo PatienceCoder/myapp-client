@@ -6,7 +6,8 @@ export default function Homepage() {
   const {setAuthenticatedUser} = useAuthContext()
   const navigate = useNavigate()
   async function logout(){
-    const callAPI = await fetch('http://127.0.0.1:4010/logout',{
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com/"
+    const callAPI = await fetch(`${SERVER_URL}/logout`,{
       method:"POST",
       headers: {
         'Content-Type' : 'application/json'
