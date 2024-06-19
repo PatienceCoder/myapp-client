@@ -14,7 +14,7 @@ export default function Forgotpassword() {
     if(userInput.email === "" || userInput.newpassword === ""){
       return toast.error("Every input field must be filled")
     }
-    const SERVER_URL = "https://myapp-server-gm8t.onrender.com/"
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
     const callAPI = await fetch(`${SERVER_URL}/forgotpassword`,{
       method:"POST",
       headers: {

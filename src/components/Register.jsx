@@ -13,7 +13,7 @@ export default function Register() {
     if(userInput.username==="" || userInput.email==="" || userInput.password===""){
       return toast.error("Every input field must have a value...")
     }
-    const SERVER_URL = "https://myapp-server-gm8t.onrender.com/"
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
     const callAPI = await fetch(`${SERVER_URL}/registrationcheck`,{
       method:"POST",
       headers: {

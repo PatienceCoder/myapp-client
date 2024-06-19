@@ -6,7 +6,7 @@ export default function Homepage() {
   const {setAuthenticatedUser} = useAuthContext()
   const navigate = useNavigate()
   async function logout(){
-    const SERVER_URL = "https://myapp-server-gm8t.onrender.com/"
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
     const callAPI = await fetch(`${SERVER_URL}/logout`,{
       method:"POST",
       headers: {

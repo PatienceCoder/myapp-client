@@ -13,7 +13,7 @@ export default function Login() {
     if(userInput.email === "" || userInput.password === ""){
       return toast.error("Every input field must be filled")
     }
-    const SERVER_URL = "https://myapp-server-gm8t.onrender.com/"
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
     const callAPI = await fetch(`${SERVER_URL}/logincheck`,{
       method:"POST",
       headers: {
