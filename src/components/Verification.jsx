@@ -3,13 +3,15 @@ import toast from 'react-hot-toast'
 import {useNavigate} from 'react-router-dom'
 import '../styles/verification.css'
 export default function Verification() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [loading,setLoading] = useState(false)
   const [userOTP,setUserOTP] = useState("")
   async function handleVerification(e){
     e.preventDefault()
     if(userOTP === ""){
       return toast.error("Please enter the otp...")
     }
+    setLoading(!loading)
     const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
       const callAPI = await fetch (`${SERVER_URL}/verificationcheck`,{
         method:"POST",
@@ -29,7 +31,7 @@ export default function Verification() {
         <h2>OTP Verification</h2>
         <form onSubmit={handleVerification} >
             <input type="text" name='otp' onChange={(e) => setUserOTP(e.target.value)} placeholder='Enter OTP...' />
-            <button type='submit'>Verify</button>
+            <button type='submit'>{loading ? "Loading..." : "Verify"}</button>
         </form>
     </div>
   )

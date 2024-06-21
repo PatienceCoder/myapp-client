@@ -3,6 +3,7 @@ import toast from 'react-hot-toast'
 import {useNavigate,Link} from 'react-router-dom'
 import '../styles/register.css'
 export default function Register() {
+  const [loading,setLoading] = useState(false)
   const [userInput,setUserInput] = useState({username:"",email:"",password:""})
   function handleChange(e){
     setUserInput({...userInput,[e.target.name] : e.target.value})
@@ -13,6 +14,7 @@ export default function Register() {
     if(userInput.username==="" || userInput.email==="" || userInput.password===""){
       return toast.error("Every input field must have a value...")
     }
+    setLoading(!loading)
     const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
     const callAPI = await fetch(`${SERVER_URL}/registrationcheck`,{
       method:"POST",
@@ -40,7 +42,7 @@ export default function Register() {
           <label htmlFor="password">Password:</label>
           <input type="password" id='password' name='password' onChange={handleChange} />
           <Link to='/login'>already have an account? login</Link>
-          <button type='submit'>Register</button>
+          <button type='submit'>{loading ? "Loading..." : "Register"}</button>
         </form>
     </div>
   )

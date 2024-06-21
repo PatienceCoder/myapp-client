@@ -4,7 +4,8 @@ import toast from 'react-hot-toast'
 import '../styles/forgotpassword.css'
 import {Link, useNavigate} from 'react-router-dom'
 export default function Forgotpassword() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [loading,setLoading] = useState(false)
   const [userInput,setUserInput] = useState({email:"",newpassword:""})
   function handleChange(e){
     setUserInput({...userInput,[e.target.name] : e.target.value})
@@ -14,6 +15,7 @@ export default function Forgotpassword() {
     if(userInput.email === "" || userInput.newpassword === ""){
       return toast.error("Every input field must be filled")
     }
+    setLoading(!loading)
     const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
     const callAPI = await fetch(`${SERVER_URL}/forgotpassword`,{
       method:"POST",
@@ -41,7 +43,7 @@ export default function Forgotpassword() {
           <label htmlFor="newpassword">New Password :</label>
           <input type="text" id='newpassword' name='newpassword' onChange={handleChange}/>
           <Link to='/login'> redirect to login</Link>
-          <button>Reset Password</button>
+          <button>{loading ? "Loading..." : "Reset Password"}</button>
         </form>
     </div>
   )
