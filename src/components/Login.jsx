@@ -3,7 +3,8 @@ import toast from 'react-hot-toast'
 import {Link, useNavigate} from 'react-router-dom'
 import '../styles/login.css'
 export default function Login() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [loading,setLoading] = useState(false)
   const [userInput,setUserInput] = useState({email:"",password:""});
   function handleChange(e){
     setUserInput({...userInput,[e.target.name] : e.target.value})
@@ -13,6 +14,7 @@ export default function Login() {
     if(userInput.email === "" || userInput.password === ""){
       return toast.error("Every input field must be filled")
     }
+    setLoading(!loading)
     const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
     const callAPI = await fetch(`${SERVER_URL}/logincheck`,{
       method:"POST",
@@ -44,7 +46,7 @@ export default function Login() {
             <Link to='/register'>Don't have an account ? register</Link>
             <Link to='/forgotpassword'>forgot password?</Link>
           </div>
-          <button>Login</button>
+          <button>{loading ? "Loading..." : "Login"}</button>
         </form>
     </div>
   )
