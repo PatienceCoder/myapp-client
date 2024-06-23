@@ -8,7 +8,7 @@ export default function Homepage() {
   const navigate = useNavigate()
   async function logout(){
     setLoading(!loading)
-    const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com" //(replace this with your render URL)
     const callAPI = await fetch(`${SERVER_URL}/logout`,{
       method:"POST",
       headers: {

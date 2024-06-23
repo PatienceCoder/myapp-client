@@ -12,7 +12,7 @@ export default function Verification() {
       return toast.error("Please enter the otp...")
     }
     setLoading(!loading)
-    const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com" //(replace this with your render URL)
       const callAPI = await fetch (`${SERVER_URL}/verificationcheck`,{
         method:"POST",
       headers: {

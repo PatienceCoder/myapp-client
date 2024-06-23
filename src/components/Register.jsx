@@ -15,7 +15,7 @@ export default function Register() {
       return toast.error("Every input field must have a value...")
     }
     setLoading(!loading)
-    const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com" //(replace this with your render URL)
     const callAPI = await fetch(`${SERVER_URL}/registrationcheck`,{
       method:"POST",
       headers: {

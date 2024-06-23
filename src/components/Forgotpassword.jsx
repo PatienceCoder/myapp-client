@@ -16,7 +16,7 @@ export default function Forgotpassword() {
       return toast.error("Every input field must be filled")
     }
     setLoading(!loading)
-    const SERVER_URL = "https://myapp-server-gm8t.onrender.com"
+    const SERVER_URL = "https://myapp-server-gm8t.onrender.com" //(replace this with your render URL)
     const callAPI = await fetch(`${SERVER_URL}/forgotpassword`,{
       method:"POST",
       headers: {
